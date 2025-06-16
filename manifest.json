@@ -11,7 +11,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.bilibili.com/"],
+      "matches": ["https://*.bilibili.com/*"],
       "js": ["content-scripts/bilibili.js"],
       "run_at": "document_idle"
     }

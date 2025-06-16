@@ -13,6 +13,7 @@
 
 ### Bilibili
 - **搜索框提示替换**：自定义搜索框的 placeholder 文案
+- **全站支持**：支持所有 bilibili 子域名和页面（如 www.bilibili.com、space.bilibili.com、live.bilibili.com 等）
 
 ## 🚀 安装方法
 
