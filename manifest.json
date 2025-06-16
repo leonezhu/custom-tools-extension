@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Custom Tools Extension",
+  "version": "1.0",
+  "description": "个人定制网页工具合集",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": ["https://*.bilibili.com/*"],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": "icons/icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.bilibili.com/"],
+      "js": ["content-scripts/bilibili.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
