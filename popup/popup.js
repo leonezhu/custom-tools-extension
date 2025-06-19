@@ -25,6 +25,11 @@ const SITES = {
         label: '替换搜索框提示',
         inputLabel: '自定义文案',
         default: '输入你想看的内容...'
+      },
+      {
+        key: 'hideTrending',
+        label: '隐藏热搜',
+        type: 'toggle'
       }
     ]
   }
@@ -73,13 +78,24 @@ async function init() {
         const enabled = config[feature.key]?.enabled ?? false;
         const value = config[feature.key]?.text ?? feature.default;
 
-        featureItem.innerHTML = `
-          <div class="feature-header">
-            <input type="checkbox" class="feature-checkbox" data-site="${siteKey}" data-key="${feature.key}" ${enabled ? 'checked' : ''}>
-            <label class="feature-label" for="checkbox-${siteKey}-${feature.key}">${feature.label}</label>
-          </div>
-          <input type="text" class="feature-input" data-site="${siteKey}" data-key="${feature.key}" value="${value}" placeholder="${feature.default}" ${!enabled ? 'disabled' : ''}>
-        `;
+        if (feature.type === 'toggle') {
+          // 只有开关的功能
+          featureItem.innerHTML = `
+            <div class="feature-header">
+              <input type="checkbox" class="feature-checkbox" data-site="${siteKey}" data-key="${feature.key}" ${enabled ? 'checked' : ''}>
+              <label class="feature-label" for="checkbox-${siteKey}-${feature.key}">${feature.label}</label>
+            </div>
+          `;
+        } else {
+          // 有文本输入的功能
+          featureItem.innerHTML = `
+            <div class="feature-header">
+              <input type="checkbox" class="feature-checkbox" data-site="${siteKey}" data-key="${feature.key}" ${enabled ? 'checked' : ''}>
+              <label class="feature-label" for="checkbox-${siteKey}-${feature.key}">${feature.label}</label>
+            </div>
+            <input type="text" class="feature-input" data-site="${siteKey}" data-key="${feature.key}" value="${value}" placeholder="${feature.default}" ${!enabled ? 'disabled' : ''}>
+          `;
+        }
         
         siteSection.appendChild(featureItem);
       });
