@@ -30,6 +30,21 @@ const SITES = {
         key: 'hideTrending',
         label: '隐藏热搜',
         type: 'toggle'
+      },
+      {
+        key: 'disableRollBtn',
+        label: '禁用换一换按钮',
+        type: 'toggle'
+      },
+      {
+        key: 'hideDynamicTrending',
+        label: '隐藏动态页热搜',
+        type: 'toggle'
+      },
+      {
+        key: 'hideLiveUsers',
+        label: '隐藏动态页直播',
+        type: 'toggle'
       }
     ]
   }
